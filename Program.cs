@@ -35,10 +35,12 @@ builder.Services.AddOpenApi();
 
 
 var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-if (string.IsNullOrEmpty(dbUrl))
-{
-    dbUrl = builder.Configuration.GetConnectionString("DefaultConnection");
-}
+// if (string.IsNullOrEmpty(dbUrl))
+// {
+//     dbUrl = builder.Configuration.GetConnectionString("DefaultConnection");
+// }
+
+Console.WriteLine("Database URL: " + dbUrl);  // Print the URL for debugging
 // Add PostgreSQL DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(dbUrl));
