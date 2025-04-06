@@ -35,10 +35,20 @@ builder.Services.AddOpenApi();
 
 
 var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-// if (string.IsNullOrEmpty(dbUrl))
-// {
-//     dbUrl = builder.Configuration.GetConnectionString("DefaultConnection");
-// }
+if (string.IsNullOrEmpty(dbUrl))
+{
+    // Fallback for local development
+    dbUrl = builder.Configuration.GetConnectionString("DefaultConnection");
+}
+else
+{
+    // Convert the Railway URI format to a key–value pair format.
+    var uri = new Uri(dbUrl);
+    var userInfo = uri.UserInfo.Split(':'); // [username, password]
+    // Note: uri.AbsolutePath starts with a '/', so we remove that.
+    var database = uri.AbsolutePath.TrimStart('/');
+    dbUrl = $"Host={uri.Host};Port={uri.Port};Database={database};Username={userInfo[0]};Password={userInfo[1]}";
+}
 
 Console.WriteLine("Database URL: " + dbUrl);  // Print the URL for debugging
 // Add PostgreSQL DbContext
