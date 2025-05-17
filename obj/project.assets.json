@@ -968,22 +968,6 @@
           }
         }
       },
-      "Npgsql/9.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.2"
-        },
-        "compile": {
-          "lib/net8.0/Npgsql.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Npgsql.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Npgsql.EntityFrameworkCore.PostgreSQL/9.0.4": {
         "type": "package",
         "dependencies": {
@@ -3418,23 +3402,6 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Npgsql/9.0.3": {
-      "sha512": "tPvY61CxOAWxNsKLEBg+oR646X4Bc8UmyQ/tJszL/7mEmIXQnnBhVJZrZEEUv0Bstu0mEsHZD5At3EO8zQRAYw==",
-      "type": "package",
-      "path": "npgsql/9.0.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net6.0/Npgsql.dll",
-        "lib/net6.0/Npgsql.xml",
-        "lib/net8.0/Npgsql.dll",
-        "lib/net8.0/Npgsql.xml",
-        "npgsql.9.0.3.nupkg.sha512",
-        "npgsql.nuspec",
-        "postgresql.png"
-      ]
-    },
     "Npgsql.EntityFrameworkCore.PostgreSQL/9.0.4": {
       "sha512": "mw5vcY2IEc7L+IeGrxpp/J5OSnCcjkjAgJYCm/eD52wpZze8zsSifdqV7zXslSMmfJG2iIUGZyo3KuDtEFKwMQ==",
       "type": "package",
@@ -3949,6 +3916,7 @@
       "Microsoft.EntityFrameworkCore >= 9.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.3",
       "Newtonsoft.Json >= 13.0.3",
+      "Npgsql >= 9.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
       "Swashbuckle.AspNetCore >= 8.1.0",
       "System.IdentityModel.Tokens.Jwt >= 8.7.0"
@@ -4034,6 +4002,10 @@
             "target": "Package",
             "version": "[13.0.3, )"
           },
+          "Npgsql": {
+            "target": "Package",
+            "version": "[9.0.4, )"
+          },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[9.0.4, )"
@@ -4069,5 +4041,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1102",
+      "level": "Error",
+      "message": "Unable to find package Npgsql with version (>= 9.0.4)\r\n  - Found 183 version(s) in nuget.org [ Nearest version: 9.0.3 ]\r\n  - Found 0 version(s) in Microsoft Visual Studio Offline Packages",
+      "libraryId": "Npgsql",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }
